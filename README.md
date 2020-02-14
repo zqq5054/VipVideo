@@ -24,6 +24,7 @@ github地址：https://github.com/zqq5054/VipVideo
 电视上起一个微型http服务器(扫描二维码绑定ip地址)，手机上解析到视频地址后，把视频地址通过http传到电视端
 电视端取到地址，调用播放器播放视频
 电视上或者电视盒子配置低，腾讯TBS视频播放器好像不行，系统webview播放也不行，但是ijk是可以的
+可以考虑手机和电视分两端，电视只需要播放和http服务器功能就可以
 
 用到的第三方开源项目如下
 android端http Server:https://github.com/koush/AndroidAsync
