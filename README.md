@@ -1,6 +1,9 @@
 Vip视频无广告解析
 vip 视频解析，支持主流视频网站，仅学习使用  
 
+截图:
+![截图](https://raw.githubusercontent.com/zqq5054/VipVideo/master/screenshoot/screenshoot01.jpg)
+
 github地址：https://github.com/zqq5054/VipVideo  
 
 利用第三方接口在线播放各大视频网站VIP视频
