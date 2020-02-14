@@ -159,17 +159,7 @@ public class PlatformActivity extends AppCompatActivity {
 
     private void reqUpdate(){
 
-        //最简方式
-        new UpdateAppManager
-                .Builder()
-                //当前Activity
-                .setActivity(this)
-                //更新地址
-                .setUpdateUrl(Constants.HOST+"/VipPlayer/api/update")
-                //实现httpManager接口的对象
-                .setHttpManager(new UpdateAppHttpUtil())
-                .build()
-                .update();
+
     }
     private void goTv(){
 

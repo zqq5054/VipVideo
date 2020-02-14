@@ -12,6 +12,7 @@ github地址：https://github.com/zqq5054/VipVideo
 基本思路：
 利用还是利用隐藏的webview解析视频,达到隐藏广告的目的 
 在shouldInterceptRequest里拦截资源
+
 取到视频的播放地址，然后利用腾讯X5内核或者ijk等播放器播放
 
 支持智能电视和电视盒子上使用
