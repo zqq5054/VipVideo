@@ -6,6 +6,7 @@ vip 视频解析，支持主流视频网站，仅学习使用
 
 智能电视和盒子上找资源同样是件麻烦事，广电总局一纸命令，很多视频网站都停止了TV版的app开发和维护，怎么看视频是个问题。投屏好像也不是那么方便，于是就萌发了这个想法，把手机上解析出来的视频地址同步推送到电视上，省去按遥控的麻烦(这段是自己写的)
 
+[Demo](https://github.com/zqq5054/VipVideo/blob/master/demo.apk?raw=true)
 
 截图:
 ![截图](https://raw.githubusercontent.com/zqq5054/VipVideo/master/screenshoot/screenshoot01.jpg)
