@@ -29,3 +29,4 @@ android端http Server:https://github.com/koush/AndroidAsync
 DKVideoPlayer 播放器(继承ijk等):https://github.com/xusigh/dueeeke-DKVideoPlayer
 其他:Gson 等等
 
+视频解析讨论群:1053200636
