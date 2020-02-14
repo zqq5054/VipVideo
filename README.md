@@ -7,6 +7,7 @@ vip 视频解析，支持主流视频网站，仅学习使用
 github地址：https://github.com/zqq5054/VipVideo  
 
 利用第三方接口在线播放各大视频网站VIP视频
+项目根目录有demo
 
 各大视频网站视频解析已经不是什么秘密，某度一搜一大把
 手机上利用webview解析，广告一大把
