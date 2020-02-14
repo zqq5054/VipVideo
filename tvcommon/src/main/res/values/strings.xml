@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TVCommon</string>
+    <string name="title_activity_tv">TVActivity</string>
+    <string name="title_activity_tbsplayer">TBSPlayer</string>
+    <string name="title_activity_system_web_view_player">SystemWebViewPlayer</string>
+
+</resources>

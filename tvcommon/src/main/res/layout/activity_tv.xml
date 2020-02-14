@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ui.TVActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:text="请确保电视和手机连接在同一个路由器上"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/serverIp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="手机扫码连接,并保持该页面在前端显示"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:src="@mipmap/alipay"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:src="@mipmap/wx"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

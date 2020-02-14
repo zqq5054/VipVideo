@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:design:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.koushikdutta.async:androidasync:2.+'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-java:3.2.5'
+    implementation 'com.github.dueeeke.dkplayer:dkplayer-ui:3.2.5'
+    implementation 'com.github.dueeeke.dkplayer:player-exo:3.2.5'
+    implementation 'com.github.dueeeke.dkplayer:player-ijk:3.2.5'
+    implementation 'com.github.dueeeke.dkplayer:videocache:3.2.5'
+    implementation 'com.fyales.android:library:1.0.2'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    api 'com.tencent.tbs.tbssdk:sdk:43697'
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'com.github.dfqin:grantor:2.5'
+    implementation files('libs/jsoup-1.10.1.jar')
+    implementation 'com.umeng.umsdk:analytics:8.0.0'
+    implementation 'com.umeng.umsdk:common:2.0.0'
+    implementation 'com.qianwen:update-app:3.5.2'
+    implementation 'com.qianwen:okhttp-utils:3.8.0'
+    implementation 'com.lzy.net:okgo:3.0.4'
+}
