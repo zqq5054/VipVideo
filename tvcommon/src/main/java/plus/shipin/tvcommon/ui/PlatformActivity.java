@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebView;
@@ -22,6 +23,9 @@ import com.fyales.tagcloud.library.TagBaseAdapter;
 import com.fyales.tagcloud.library.TagCloudLayout;
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.hb.dialog.myDialog.MyAlertInputDialog;
 import com.umeng.analytics.MobclickAgent;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -55,6 +59,7 @@ public class PlatformActivity extends AppCompatActivity {
         mList.add("扫码连接电视");
         mList.add("电视请点我或按菜单键");
         mList.add("手机端下载(仅支持安卓)(7)");
+        mList.add("添加接口");
         requestSD();
         mAdapter = new TagBaseAdapter(this,mList);
         mContainer.setAdapter(mAdapter);
@@ -89,13 +94,46 @@ public class PlatformActivity extends AppCompatActivity {
                     case 8:
                         showPhone();
                         break;
+                    case 9:
+                        showInput();
+                        break;
 
                 }
             }
         });
     }
 
+    private void showInput(){
 
+        final MyAlertInputDialog myAlertInputDialog = new MyAlertInputDialog(this).builder()
+                .setTitle("请输入")
+                .setEditText("");
+        myAlertInputDialog.setPositiveButton("确认", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                showMsg(myAlertInputDialog.getResult());
+                SharedPreferences data = getSharedPreferences("data",0);
+                String listStr = data.getString("api","");
+                List<String> list = new ArrayList<>();
+                if(!TextUtils.isEmpty(listStr)){
+
+                    list = new Gson().fromJson(listStr, new TypeToken<List<String>>(){}.getType());
+                }
+                list.add(myAlertInputDialog.getResult());
+                data.edit().putString("api",new Gson().toJson(list)).commit();
+                myAlertInputDialog.dismiss();
+                Toast.makeText(PlatformActivity.this,"添加成功",Toast.LENGTH_SHORT).show();
+            }
+        }).setNegativeButton("取消", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                myAlertInputDialog.dismiss();
+            }
+        });
+        myAlertInputDialog.show();
+    }
     private void gotoSite(String url){
 
         Intent intent = new Intent(this, WebviewActivity.class);

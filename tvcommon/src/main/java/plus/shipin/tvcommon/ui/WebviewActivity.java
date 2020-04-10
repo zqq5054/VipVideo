@@ -12,6 +12,9 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.hb.dialog.myDialog.ActionSheetDialog;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.TbsVideo;
@@ -21,7 +24,9 @@ import com.tencent.smtt.sdk.WebViewClient;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import plus.shipin.tvcommon.R;
@@ -37,6 +42,7 @@ public class WebviewActivity extends AppCompatActivity implements Runnable{
     private long startAna = -1;
     private ProgressDialog pd;
     private Thread thread;
+    private List<String> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +55,31 @@ public class WebviewActivity extends AppCompatActivity implements Runnable{
             finish();
         });
         findViewById(R.id.analysisBtn).setOnClickListener(view->{
-            analysisUrl();
+            SharedPreferences data = getSharedPreferences("data",0);
+            String listStr = data.getString("api","");
+
+            if(!TextUtils.isEmpty(listStr)){
+
+                list = new Gson().fromJson(listStr, new TypeToken<List<String>>(){}.getType());
+            }
+            if(!list.isEmpty()){
+                ActionSheetDialog dialog = new ActionSheetDialog(this).builder().setTitle("请选择接口");
+                for(int i = 0;i<list.size();i++){
+
+                    String str = list.get(i);
+                    dialog.addSheetItem(str, null, new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+                            site = list.get(which-1);
+                            analysisUrl();
+                        }
+                    });
+                }
+                dialog.show();
+            }else {
+
+                analysisUrl();
+            }
         });
         com.tencent.smtt.sdk.WebSettings webSettings = webView.getSettings();
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
@@ -123,7 +153,9 @@ public class WebviewActivity extends AppCompatActivity implements Runnable{
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
 
                 String url = request.getUrl().toString();
+
                 if(url.contains(".m3u8")||url.contains(".mp4")){
+                    System.out.println("url = "+url);
                     if(!isPause) {
                         if(TbsVideo.canUseTbsPlayer(WebviewActivity.this)) {
                             Intent intent = new Intent(WebviewActivity.this, TBSPlayer.class);
