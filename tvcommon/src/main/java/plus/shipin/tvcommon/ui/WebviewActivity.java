@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -36,7 +38,7 @@ public class WebviewActivity extends AppCompatActivity implements Runnable{
     private com.tencent.smtt.sdk.WebView webView;
     private boolean isPause = false;
     private String analysisJs = null;
-    private String site = "https://api.sigujx.com/jx/?url=";
+    private String site = "http://jx.htv009.com/?url=";
     private com.tencent.smtt.sdk.WebView analysis;
     Map<String,String> header = null;
     private long startAna = -1;
@@ -153,8 +155,16 @@ public class WebviewActivity extends AppCompatActivity implements Runnable{
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
 
                 String url = request.getUrl().toString();
+                System.out.println("url = "+url);
+                if(url.startsWith("http://jx.htv009.com/dp.php")){
 
-                if(url.contains(".m3u8")||url.contains(".mp4")){
+                    Message msg = new Message();
+                    msg.obj = url;
+                    handler.sendMessage(msg);
+
+                    return null;
+                }
+                if((url.contains(".m3u8")||url.contains(".mp4"))&&!url.contains("vvv=")){
                     System.out.println("url = "+url);
                     if(!isPause) {
                         if(TbsVideo.canUseTbsPlayer(WebviewActivity.this)) {
@@ -342,4 +352,16 @@ public class WebviewActivity extends AppCompatActivity implements Runnable{
         super.onResume();
         isPause = false;
     }
+    Handler handler = new Handler(){
+
+        @Override
+        public void handleMessage(Message msg) {
+            String url = (String)msg.obj;
+//            webView.loadUrl(url);
+            Intent intent = new Intent(WebviewActivity.this,X5WebviewActivity.class);
+            intent.putExtra("url",url);
+            startActivity(intent);
+            pd.dismiss();
+        }
+    };
 }

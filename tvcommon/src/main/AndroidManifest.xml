@@ -41,6 +41,10 @@
             android:name=".ui.WebviewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".ui.X5WebviewActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/NoTitleFullscreen" />
+        <activity
             android:name=".ui.PlatformActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
