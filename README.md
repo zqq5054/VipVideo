@@ -42,5 +42,9 @@ android端http Server:https://github.com/koush/AndroidAsync
 腾讯TBS  x5内核
 DKVideoPlayer 播放器(集成ijk等):https://github.com/xusigh/dueeeke-DKVideoPlayer
 其他:Gson 等等
+
+
 接下来的计划：连续剧连续播放功能，目前只能一集一集的解析，接下来计划添加连续解析功能
+
+
 视频解析讨论群:1053200636
